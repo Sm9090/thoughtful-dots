@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 249 244 235; /* warm beige */
+    --foreground: 56 48 40; /* warm dark brown */
+    --muted: 243 237 225; /* soft sand */
+    --muted-foreground: 119 100 80; /* warm brown */
+    --accent: 168 140 110; /* earthy tan */
+    --accent-foreground: 250 247 240; /* warm white */
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-sand-100 text-stone-800 font-sans;
+    background-image:
+      radial-gradient(ellipse at 20% 30%, rgba(205, 178, 138, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(192, 141, 112, 0.1) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-blend-mode: normal, normal, soft-light;
+    background-size: 100% 100%, 100% 100%, 300px 300px;
+    background-attachment: fixed;
+  }
+
+  /* Custom selection colors */
+  ::selection {
+    @apply bg-clay-200 text-stone-900;
+  }
+
+  /* Smooth focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-clay-400 ring-offset-2 ring-offset-sand-100;
+  }
+
+  /* Better heading styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-stone-900 tracking-tight;
+  }
+
+  /* Smooth link transitions */
+  a {
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer components {
+  /* Organic, flowing container */
+  .container-organic {
+    @apply w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-20 sm:py-28 lg:py-36;
+  }
+
+  /* Glassmorphism effect */
+  .glass {
+    @apply bg-sand-50/70 backdrop-blur-md border border-sand-200/30 shadow-soft;
+  }
+
+  /* Organic card style */
+  .card-organic {
+    @apply bg-sand-50/90 backdrop-blur-sm rounded-3xl p-8
+           border border-clay-200/30 shadow-soft
+           transition-all duration-500 ease-smooth
+           hover:shadow-soft-lg hover:border-clay-300/40;
+  }
+
+  /* Mindful button - primary */
+  .btn-mindful {
+    @apply inline-flex items-center justify-center gap-2
+           px-8 py-4 rounded-full
+           bg-stone-800 text-sand-50
+           font-medium tracking-wide
+           transition-all duration-500 ease-smooth
+           hover:bg-stone-900 hover:shadow-soft-lg hover:-translate-y-0.5
+           active:translate-y-0 active:shadow-soft;
+  }
+
+  /* Mindful button - secondary */
+  .btn-mindful-outline {
+    @apply inline-flex items-center justify-center gap-2
+           px-8 py-4 rounded-full
+           bg-transparent text-stone-700
+           border-2 border-stone-400
+           font-medium tracking-wide
+           transition-all duration-500 ease-smooth
+           hover:bg-stone-100 hover:border-stone-500 hover:-translate-y-0.5
+           active:translate-y-0;
+  }
+
+  /* Soft input style */
+  .input-soft {
+    @apply w-full px-6 py-4 rounded-2xl
+           bg-sand-50 border border-clay-200
+           text-stone-800 placeholder:text-stone-400
+           transition-all duration-300
+           focus:bg-sand-50 focus:border-clay-400 focus:ring-0;
+  }
+
+  /* Floating label */
+  .label-float {
+    @apply block text-sm font-medium text-stone-600 mb-2;
+  }
+
+  /* Decorative mandala ring */
+  .mandala-ring {
+    @apply absolute rounded-full border border-stone-300/30;
+    animation: spin 60s linear infinite;
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent
+           bg-gradient-to-r from-stone-700 via-clay-600 to-stone-700;
+  }
+
+  /* Breathing animation for meditative elements */
+  .breathing {
+    animation: breathe 8s ease-in-out infinite;
+  }
+
+  /* Organic divider */
+  .divider-organic {
+    @apply w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-transparent via-clay-400 to-transparent;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Animation delays */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+  .animation-delay-800 {
+    animation-delay: 800ms;
+  }
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
+  }
+
+  /* Text balance for better typography */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar for larger screens */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-sand-200;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-stone-400 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-stone-500;
+  }
+}
